@@ -36,7 +36,7 @@ def sigmoid(z):
 def sigmoid_derivative(z):
     return sigmoid(z) * (1. - sigmoid(z))
     
-def NeuralwithSGD(epochs,W0,W1,b0,b1,train,batch_size,eta,validation,best_acc,best_epoch,best_batch_size,best_eta):
+def NeuralwithSGD(epochs,W0,W1,b0,b1,train,batch_size,eta,validation,best_W0, best_W1, best_b0, best_b1, best_acc,best_epoch,best_batch_size,best_eta):
 
     #start training
     print('eta = %s batch_size = %s' % (eta, batch_size))
@@ -100,8 +100,8 @@ def NeuralwithSGD(epochs,W0,W1,b0,b1,train,batch_size,eta,validation,best_acc,be
     
 #choose parameters
 num_neurons = [784, 100, 10]
-batch_size = [1000, 500]
-etas = [0.0005, 0.001, 0.005]
+batch_size = [1000]
+etas = [0.005]
 best_acc = 0
 best_epoch = 0
 best_batch_size = 0
@@ -118,4 +118,4 @@ for batch in batch_size:
         W1 = 2*np.random.random((num_neurons[1],num_neurons[2]))-1
         b0 = 2*np.random.random(num_neurons[1])-1
         b1 = 2*np.random.random(num_neurons[2])-1
-        best_W0, best_W1, best_b0, best_b1, best_epoch, best_acc, best_batch_size, best_eta = NeuralwithSGD(100,W0,W1,b0,b1,train,batch,eta,validation,best_acc,best_epoch,best_batch_size,best_eta)
+        best_W0, best_W1, best_b0, best_b1, best_epoch, best_acc, best_batch_size, best_eta = NeuralwithSGD(100,W0,W1,b0,b1,train,batch,eta,validation,best_W0, best_W1, best_b0, best_b1, best_acc,best_epoch,best_batch_size,best_eta)
