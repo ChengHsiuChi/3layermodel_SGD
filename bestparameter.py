@@ -122,4 +122,4 @@ predict = np.dot(predict, best_W1) + best_b1
 predict_label = sigmoid(predict)
 
 accuracy = (np.argmax(predict_label,axis=1) == test_y).sum()
-print('The test data with best model has accuracy %0.2f ' %(epoch, 100*accuracy/len(test)))
+print('The test data with best model has accuracy %0.2f ' %(100*accuracy/len(test)))
