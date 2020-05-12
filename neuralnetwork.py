@@ -101,7 +101,7 @@ def NeuralwithSGD(epochs,W0,W1,b0,b1,train,batch_size,eta,validation,best_W0, be
 #choose parameters
 num_neurons = [784, 100, 10]
 batch_size = [500]
-etas = [0.005]
+etas = [0.0005]
 best_acc = 0
 best_epoch = 0
 best_batch_size = 0
