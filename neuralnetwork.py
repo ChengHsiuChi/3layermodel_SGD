@@ -100,8 +100,8 @@ def NeuralwithSGD(epochs,W0,W1,b0,b1,train,batch_size,eta,validation,best_W0, be
     
 #choose parameters
 num_neurons = [784, 100, 10]
-batch_size = [500]
-etas = [0.0005]
+batch_size = [250, 500, 1000]
+etas = [0.005, 0.001, 0.0005]
 best_acc = 0
 best_epoch = 0
 best_batch_size = 0
@@ -119,3 +119,14 @@ for batch in batch_size:
         b0 = 2*np.random.random(num_neurons[1])-1
         b1 = 2*np.random.random(num_neurons[2])-1
         best_W0, best_W1, best_b0, best_b1, best_epoch, best_acc, best_batch_size, best_eta = NeuralwithSGD(100,W0,W1,b0,b1,train,batch,eta,validation,best_W0, best_W1, best_b0, best_b1, best_acc,best_epoch,best_batch_size,best_eta)
+
+#train more epoch with the best performance above
+best_W0, best_W1, best_b0, best_b1, best_epoch, best_acc, best_batch_size, best_eta = NeuralwithSGD(1000, best_W0, best_W1, best_b0, best_b1, train, best_batch,best_eta,validation,best_W0, best_W1, best_b0, best_b1, best_acc, best_epoch, best_batch_size, best_eta)
+
+predict = np.dot(test_x, best_W0) + best_b0
+predict = sigmoid(predict)
+predict = np.dot(predict, best_W1) + best_b1
+predict_label = sigmoid(predict)
+
+accuracy = (np.argmax(predict_label,axis=1) == test_y).sum()
+print('The test data with best model has accuracy %0.2f ' %(epoch, 100*accuracy/len(test)))
