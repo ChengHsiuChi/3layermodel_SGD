@@ -3,9 +3,9 @@ import pandas as pd
 import zipfile
 
 #read data
-zf = zipfile.ZipFile('.\mnist_train.zip') 
+zf = zipfile.ZipFile('mnist_train.zip') 
 train_all = pd.read_csv(zf.open(r'mnist_train.csv'))
-test = pd.read_csv('.\mnist_test.csv')
+test = pd.read_csv('mnist_test.csv')
 
 #regularization
 train_all[train_all.columns[1:]] = train_all[train_all.columns[1:]].div(255)
